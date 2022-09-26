@@ -1,0 +1,28 @@
+pipeline {
+    agent none
+
+    stages {
+        stage('Invoke AWS Lambda fucntion') {
+            agent {
+                    label "EC2_Slave1"
+                  }
+                steps {
+                    sh(script: "aws lambda invoke \
+                    --function-name 'dhamlambdahelloworld' \
+                    --invocation-type Event \
+                    --payload '{\"key1\":\"Hello World from first Lambda function\"}' \
+                      response.json")                
+                      }
+            }
+        stage('Reading Response.json') {
+            agent {
+                    label "EC2_Slave1"
+                  }
+            steps {
+                sh 'pwd'
+                sh 'ls -lrt'
+                sh 'cat response.json'
+            }
+        }
+    }
+}
