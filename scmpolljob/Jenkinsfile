@@ -5,7 +5,8 @@ pipeline {
          
             steps {
               //sh 'cd webhookjob'
-              sh 'ls -lrt'              
+              sh 'ls -lrt'
+              sh 'echo added this line for scm poll at 3PM 26 Sep 2022'              
               sh "cat ./webhookjob/01_s3cft.yml"
               //sh "aws cloudformation create-stack --stack-name s3bucket --template-body file://./webhookjob/01_s3cft.yml --region 'us-east-1'"
               //above clouformation is tested succesfully on ec2 slave 2 machine.   
