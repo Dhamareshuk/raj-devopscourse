@@ -2,6 +2,9 @@ pipeline {
     agent any
     stages {
         stage('Submit Stack') {
+            agent {
+                    label "EC2_Slave2"
+                  }
             steps {
               //sh 'cd webhookjob'
               sh 'ls -lrt'              
