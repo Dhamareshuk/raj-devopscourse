@@ -2,14 +2,11 @@ pipeline {
     agent any
     stages {
         stage('Submit Stack') {
-            agent {
-                    label "EC2_Slave2"
-                  }
+         
             steps {
               //sh 'cd webhookjob'
               sh 'ls -lrt'              
               sh "cat ./webhookjob/01_s3cft.yml"
-              sh "aws s3 ls"
               //sh "aws cloudformation create-stack --stack-name s3bucket --template-body file://./webhookjob/01_s3cft.yml --region 'us-east-1'"
               //above clouformation is tested succesfully on ec2 slave 2 machine.   
                 }
